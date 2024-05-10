@@ -13,4 +13,11 @@ class TextTransformerSwitchTest {
         TextTransformerSwitch transformerSwitch = new TextTransformerSwitch(new BaseTextTransformer(), new String[]{"Reverse"});
         assertEquals("abcD", transformerSwitch.transform("dcbA"));
     }
+
+    @Test
+    public void testTransformerNameException(){
+        assertThrows(IllegalArgumentException.class, () -> {
+            TextTransformerSwitch transformerSwitch = new TextTransformerSwitch(new BaseTextTransformer(), new String[]{"WrongName"});
+        });
+    }
 }

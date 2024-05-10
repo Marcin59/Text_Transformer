@@ -9,8 +9,11 @@ public class TextTransformerSwitch {
     public TextTransformerSwitch(TextTransformer component, String[] transforms){
         decoratedTransformer = component;
         for(String transform: transforms){
-            if(Objects.equals(transform, "Reverse")){
-                decoratedTransformer = new ReverseDecorator(decoratedTransformer);
+            switch (transform){
+                case "Reverse":
+                    decoratedTransformer = new ReverseDecorator(decoratedTransformer);
+                    break;
+                default: throw new IllegalArgumentException("Wrong transformer name");
             }
         }
     }
