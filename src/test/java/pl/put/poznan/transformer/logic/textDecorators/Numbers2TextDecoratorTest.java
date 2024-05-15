@@ -14,11 +14,21 @@ class Numbers2TextDecoratorTest {
     static void setUp(){
         transformer = new Numbers2TextDecorator(new BaseTextTransformer());
     }
+    @Test
+    public void testPunctuation(){
+        String test="I have 4! What 4? 4. Still don't know what 4, because you don't say!";
+        String answer="I have four! What four? four. Still don't know what four, because you don't say!";
+        assertEquals(answer, transformer.transform(test));
+
+        test="I have 4.2! What 4.2? 4.2. Still don't know what 4.2, because you don't say!";
+        answer="I have four and two tenths! What four and two tenths? four and two tenths. Still don't know what four and two tenths, because you don't say!";
+        assertEquals(answer, transformer.transform(test));
+    }
 
     @Test
     public void testIntegers(){
         String test="0 apples, 5 bananas, 12 grapes, 57 oranges, 127 strawberries, 1000 kiwis, 1234 pineapples";
-        String answer="zero apples, five bananas, twelve grapes, fifty-seven oranges, one hundred twenty-seven strawberries, one thousand kiwis, 1234 pineapples";
+        String answer="zero apples, five bananas, twelve grapes, fifty-seven oranges, one hundred twenty-seven strawberries, one thousand kiwis, one thousand two hundred thirty-four pineapples";
         assertEquals(answer, transformer.transform(test));
     }
 
