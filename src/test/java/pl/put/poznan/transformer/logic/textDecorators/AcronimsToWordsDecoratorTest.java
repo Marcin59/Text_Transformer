@@ -38,6 +38,12 @@ public class AcronimsToWordsDecoratorTest {
         String result = transformer.transform(input);
         assertEquals("talking about flowers and so on", result);
     }
+    public void aso_dot_test() {
+        TextTransformer transformer = new AcronimsToWordsDecorator(new MockTransformer());
+        String input = "talking about flowers aso.";
+        String result = transformer.transform(input);
+        assertEquals("talking about flowers and so on.", result);
+    }
 
     private static class MockTransformer implements TextTransformer {
         @Override

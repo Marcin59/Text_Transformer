@@ -16,6 +16,7 @@ public class AcronimsToWordsDecorator extends TextDecorator {
         abbreviationMap.put("dr", "doctor");
         abbreviationMap.put("e.g.", "for example");
         abbreviationMap.put("aso", "and so on");
+        abbreviationMap.put("aso.", "and so on.");
     }
     public String transform(String text) {
         text = super.transform(text);
