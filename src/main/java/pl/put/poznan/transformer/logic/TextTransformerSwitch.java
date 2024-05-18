@@ -21,7 +21,7 @@ public class TextTransformerSwitch {
                 case "Words2Acronyms":
                     decoratedTransformer = new Words2AcronymsDecorator(decoratedTransformer);
                     break;
-                default: throw new IllegalArgumentException("Wrong transformer name");
+                default: throw new IllegalTransformerNameException(transform);
             }
         }
     }

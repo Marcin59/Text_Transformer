@@ -16,7 +16,7 @@ class TextTransformerSwitchTest {
 
     @Test
     public void testTransformerNameException(){
-        assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(IllegalTransformerNameException.class, () -> {
             TextTransformerSwitch transformerSwitch = new TextTransformerSwitch(new BaseTextTransformer(), new String[]{"WrongName"});
         });
     }
