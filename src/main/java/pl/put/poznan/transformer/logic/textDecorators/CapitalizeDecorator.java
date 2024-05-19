@@ -30,7 +30,7 @@ public class CapitalizeDecorator extends TextDecorator {
     }
 
     /**
-     * Capitalizes the first letter of each word in the given text and transforms the rest to lowercase.
+     * Capitalizes the first letter of each word in the given text.
      *
      * @param text The text to be capitalized.
      * @return The transformed text.
