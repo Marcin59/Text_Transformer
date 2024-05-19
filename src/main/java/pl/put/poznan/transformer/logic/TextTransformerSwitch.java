@@ -3,11 +3,11 @@ package pl.put.poznan.transformer.logic;
 import pl.put.poznan.transformer.logic.textDecorators.Numbers2TextDecorator;
 import pl.put.poznan.transformer.logic.textDecorators.ReverseDecorator;
 import pl.put.poznan.transformer.logic.textDecorators.Words2AcronymsDecorator;
-import pl.put.poznan.transformer.logic.textDecorators. AcronymsToWordsDecorator;
+import pl.put.poznan.transformer.logic.textDecorators.AcronymsToWordsDecorator;
 import pl.put.poznan.transformer.logic.textDecorators.LowerCaseDecorator;
 import pl.put.poznan.transformer.logic.textDecorators.UpperCaseDecorator;
 import pl.put.poznan.transformer.logic.textDecorators.CapitalizeDecorator;
-
+import pl.put.poznan.transformer.logic.textDecorators.LatexDecorator;
 
 
 public class TextTransformerSwitch {
@@ -37,7 +37,9 @@ public class TextTransformerSwitch {
                 case "ToCapitalizeCase":
                     decoratedTransformer = new CapitalizeDecorator(decoratedTransformer);
                     break;
-
+                case "Latex":
+                    decoratedTransformer = new LatexDecorator(decoratedTransformer);
+                    break;
                 default: throw new IllegalArgumentException("Wrong transformer name");
             }
         }
