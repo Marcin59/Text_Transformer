@@ -20,7 +20,7 @@ jobs:
         cache: maven
     - name: Build and test
       run: mvn --batch-mode --update-snapshots verify
-    - run: mkdir staging && cp target/*.jar staging
+    - run: mkdir staging && cp target/*.jar staging && cp -r target/site/apidocs staging
     - uses: actions/upload-artifact@v4
       with:
         name: Package

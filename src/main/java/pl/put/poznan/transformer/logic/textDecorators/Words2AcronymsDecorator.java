@@ -40,6 +40,7 @@ public class Words2AcronymsDecorator extends TextDecorator {
 
     @Override
     public String transform(String text) {
+        text = super.transform(text);
         String[] expressions = {"for example", "among others", "and so on"};
         for (String expression : expressions) {
             Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
