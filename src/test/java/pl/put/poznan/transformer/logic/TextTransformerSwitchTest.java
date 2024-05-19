@@ -1,8 +1,7 @@
 package pl.put.poznan.transformer.logic;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import pl.put.poznan.transformer.logic.textDecorators.ReverseDecorator;
+import pl.put.poznan.transformer.logic.exceptions.IllegalTransformerNameException;
 import pl.put.poznan.transformer.logic.textTransformers.BaseTextTransformer;
 
 import static org.junit.jupiter.api.Assertions.*;

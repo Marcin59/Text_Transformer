@@ -4,7 +4,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.put.poznan.transformer.logic.IllegalTransformerNameException;
+import pl.put.poznan.transformer.logic.exceptions.IllegalTransformerNameException;
 import pl.put.poznan.transformer.logic.TextTransformerSwitch;
 import pl.put.poznan.transformer.logic.textTransformers.BaseTextTransformer;
 
