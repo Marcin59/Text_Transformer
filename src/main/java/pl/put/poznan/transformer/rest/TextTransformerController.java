@@ -1,7 +1,10 @@
 package pl.put.poznan.transformer.rest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pl.put.poznan.transformer.logic.exceptions.IllegalTransformerNameException;
 import pl.put.poznan.transformer.logic.TextTransformerSwitch;
 import pl.put.poznan.transformer.logic.textTransformers.BaseTextTransformer;
 
@@ -9,36 +12,42 @@ import java.util.Arrays;
 
 
 @RestController
-@RequestMapping("/{text}")
+@RequestMapping("/")
 public class TextTransformerController {
 
     private static final Logger logger = LoggerFactory.getLogger(TextTransformerController.class);
 
-    @RequestMapping(method = RequestMethod.GET, produces = "application/json")
-    public String get(@PathVariable String text,
-                              @RequestParam(value="transforms", defaultValue="upper,escape") String[] transforms) {
+    // example request: curl -X POST -H "Content-Type: application/json" -d '{"text":"TeSt", "transforms":["Reverse"]}' http://localhost:8080
+    @RequestMapping(method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+    public ResponseEntity<TransformResponse> post(@RequestBody TransformRequest request) {
+        String text = request.getText();
+        String[] transforms = request.getTransforms();
 
         // log the parameters
-        logger.debug(text);
-        logger.debug(Arrays.toString(transforms));
+        logger.debug("Received text: " + text);
+        logger.debug("Received transforms: " + Arrays.toString(transforms));
 
-        // perform the transformation, you should run your logic here, below is just a silly example
         TextTransformerSwitch transformer = new TextTransformerSwitch(new BaseTextTransformer(), transforms);
-        return transformer.transform(text);
+
+        TransformResponse response = new TransformResponse(
+                HttpStatus.OK.value(),
+                "",
+                transformer.transform(text)
+        );
+        logger.debug("Response: " + response.getMessage());
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-//    @RequestMapping(method = RequestMethod.POST, produces = "application/json")
-//    public String post(@PathVariable String text,
-//                      @RequestBody String[] transforms) {
-//
-//        // log the parameters
-//        logger.debug(text);
-//        logger.debug(Arrays.toString(transforms));
-//
-//        // perform the transformation, you should run your logic here, below is just a silly example
-//        BaseTextTransformer transformer = new BaseTextTransformer(transforms);
-//        return transformer.transform(text);
-//    }
+    @ExceptionHandler(IllegalTransformerNameException.class)
+    public ResponseEntity<TransformResponse> handleIllegalTransformerNameException(IllegalTransformerNameException e) {
+        logger.error(e.getMessage());
+        TransformResponse response = new TransformResponse(
+                HttpStatus.BAD_REQUEST.value(),
+                e.getMessage(),
+                ""
+        );
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+    }
 }
 
 
