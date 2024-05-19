@@ -94,6 +94,7 @@ public class Numbers2TextDecorator extends TextDecorator {
     }
     @Override
     public String transform(String text){
+        text = super.transform(text);
         Pattern pattern = Pattern.compile("\\b\\d+(\\.\\d+)?\\b");
         Matcher matcher = pattern.matcher(text);
         StringBuffer sb = new StringBuffer();
