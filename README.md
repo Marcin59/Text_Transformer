@@ -8,4 +8,4 @@ For people working with text data, our Text Transformer application will allow y
 - Marcel Rojewski - 156059
 - Marianna Myszkowska - 156041
 
-  
+### [Architecture UML Diagram](https://drive.google.com/file/d/1zo4Nct7cGzKP5EASv_H0Dy_CVkbBZAOz/view?usp=sharing)
