@@ -15,7 +15,7 @@ public class AcronymsToWordsDecorator extends TextDecorator {
     static {
         abbreviationMap.put("prof.", "professor");
         abbreviationMap.put("dr", "doctor");
-        abbreviationMap.put("dr.", "doctor");
+        abbreviationMap.put("dr.", "doctor.");
         abbreviationMap.put("e.g.", "for example");
         abbreviationMap.put("aso", "and so on");
         abbreviationMap.put("aso.", "and so on.");
