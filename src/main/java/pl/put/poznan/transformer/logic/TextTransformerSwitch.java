@@ -1,8 +1,10 @@
 package pl.put.poznan.transformer.logic;
 
-import pl.put.poznan.transformer.logic.textDecorators.Numbers2TextDecorator;
+
+import pl.put.poznan.transformer.logic.textDecorators.NumbersToTextDecorator;
 import pl.put.poznan.transformer.logic.textDecorators.ReverseDecorator;
-import pl.put.poznan.transformer.logic.textDecorators.Words2AcronymsDecorator;
+import pl.put.poznan.transformer.logic.textDecorators.WordsToAcronymsDecorator;
+
 
 import java.util.Objects;
 
@@ -15,11 +17,11 @@ public class TextTransformerSwitch {
                 case "Reverse":
                     decoratedTransformer = new ReverseDecorator(decoratedTransformer);
                     break;
-                case "Numbers2Text":
-                    decoratedTransformer = new Numbers2TextDecorator(decoratedTransformer);
+                case "NumbersToText":
+                    decoratedTransformer = new NumbersToTextDecorator(decoratedTransformer);
                     break;
-                case "Words2Acronyms":
-                    decoratedTransformer = new Words2AcronymsDecorator(decoratedTransformer);
+                case "WordsToAcronyms":
+                    decoratedTransformer = new WordsToAcronymsDecorator(decoratedTransformer);
                     break;
                 default: throw new IllegalArgumentException("Wrong transformer name");
             }

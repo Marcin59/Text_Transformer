@@ -6,8 +6,8 @@ import pl.put.poznan.transformer.logic.TextTransformer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Words2AcronymsDecorator extends TextDecorator {
-    public Words2AcronymsDecorator(TextTransformer textToTransform) {
+public class WordsToAcronymsDecorator extends TextDecorator {
+    public WordsToAcronymsDecorator(TextTransformer textToTransform) {
         super(textToTransform);
     }
 
