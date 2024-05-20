@@ -7,13 +7,13 @@ import pl.put.poznan.transformer.logic.textTransformers.BaseTextTransformer;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class Words2AcronymsDecoratorTest {
+class WordsToAcronymsDecoratorTest {
 
     public static TextTransformer transformer;
 
     @BeforeAll
     static void setUp(){
-        transformer = new Words2AcronymsDecorator(new BaseTextTransformer());
+        transformer = new WordsToAcronymsDecorator(new BaseTextTransformer());
     }
 
     @Test

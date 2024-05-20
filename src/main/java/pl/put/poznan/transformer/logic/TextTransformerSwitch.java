@@ -1,9 +1,9 @@
 package pl.put.poznan.transformer.logic;
 
 import pl.put.poznan.transformer.logic.exceptions.IllegalTransformerNameException;
-import pl.put.poznan.transformer.logic.textDecorators.Numbers2TextDecorator;
+import pl.put.poznan.transformer.logic.textDecorators.NumbersToTextDecorator;
 import pl.put.poznan.transformer.logic.textDecorators.ReverseDecorator;
-import pl.put.poznan.transformer.logic.textDecorators.Words2AcronymsDecorator;
+import pl.put.poznan.transformer.logic.textDecorators.WordsToAcronymsDecorator;
 import pl.put.poznan.transformer.logic.textDecorators.AcronymsToWordsDecorator;
 import pl.put.poznan.transformer.logic.textDecorators.LowerCaseDecorator;
 import pl.put.poznan.transformer.logic.textDecorators.UpperCaseDecorator;
@@ -20,13 +20,13 @@ public class TextTransformerSwitch {
                 case "Reverse":
                     decoratedTransformer = new ReverseDecorator(decoratedTransformer);
                     break;
-                case "Numbers2Text":
-                    decoratedTransformer = new Numbers2TextDecorator(decoratedTransformer);
+                case "NumbersToText":
+                    decoratedTransformer = new NumbersToTextDecorator(decoratedTransformer);
                     break;
-                case "Words2Acronyms":
-                    decoratedTransformer = new Words2AcronymsDecorator(decoratedTransformer);
+                case "WordsToAcronyms":
+                    decoratedTransformer = new WordsToAcronymsDecorator(decoratedTransformer);
                     break;
-                case "Acronyms2Words":
+                case "AcronymsToWords":
                     decoratedTransformer = new AcronymsToWordsDecorator(decoratedTransformer);
                     break;
                 case "ToUpperCase":
