@@ -7,12 +7,12 @@ import pl.put.poznan.transformer.logic.textTransformers.BaseTextTransformer;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class Numbers2TextDecoratorTest {
+class NumbersToTextDecoratorTest {
     public static TextTransformer transformer;
 
     @BeforeAll
     static void setUp(){
-        transformer = new Numbers2TextDecorator(new BaseTextTransformer());
+        transformer = new NumbersToTextDecorator(new BaseTextTransformer());
     }
     @Test
     public void testPunctuation(){

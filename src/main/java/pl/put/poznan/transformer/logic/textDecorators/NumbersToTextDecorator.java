@@ -6,8 +6,8 @@ import pl.put.poznan.transformer.logic.TextTransformer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Numbers2TextDecorator extends TextDecorator {
-    public Numbers2TextDecorator(TextTransformer textToTransform) {
+public class NumbersToTextDecorator extends TextDecorator {
+    public NumbersToTextDecorator(TextTransformer textToTransform) {
         super(textToTransform);
     }
 
