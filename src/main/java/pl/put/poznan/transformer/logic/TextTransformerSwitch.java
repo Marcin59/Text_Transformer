@@ -34,6 +34,8 @@ public class TextTransformerSwitch {
                 case "Latex":
                     decoratedTransformer = new LatexDecorator(decoratedTransformer);
                     break;
+                case "RemoveDuplicateWords":
+                    decoratedTransformer = new RemoveDuplicateWordsDecorator(decoratedTransformer);
                 case "ReverseCase":
                     decoratedTransformer = new ReverseCaseDecorator(decoratedTransformer);
                     break;
