@@ -9,6 +9,7 @@ import pl.put.poznan.transformer.logic.textDecorators.LowerCaseDecorator;
 import pl.put.poznan.transformer.logic.textDecorators.UpperCaseDecorator;
 import pl.put.poznan.transformer.logic.textDecorators.CapitalizeDecorator;
 import pl.put.poznan.transformer.logic.textDecorators.LatexDecorator;
+import pl.put.poznan.transformer.logic.textDecorators.RemoveDuplicateWordsDecorator;
 
 
 public class TextTransformerSwitch {
@@ -40,6 +41,9 @@ public class TextTransformerSwitch {
                     break;
                 case "Latex":
                     decoratedTransformer = new LatexDecorator(decoratedTransformer);
+                    break;
+                case "RemoveDuplicateWords":
+                    decoratedTransformer = new RemoveDuplicateWordsDecorator(decoratedTransformer);
                     break;
                 default: throw new IllegalTransformerNameException(transform);
             }
