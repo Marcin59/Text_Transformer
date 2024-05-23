@@ -1,15 +1,7 @@
 package pl.put.poznan.transformer.logic;
 
 import pl.put.poznan.transformer.logic.exceptions.IllegalTransformerNameException;
-import pl.put.poznan.transformer.logic.textDecorators.NumbersToTextDecorator;
-import pl.put.poznan.transformer.logic.textDecorators.ReverseDecorator;
-import pl.put.poznan.transformer.logic.textDecorators.WordsToAcronymsDecorator;
-import pl.put.poznan.transformer.logic.textDecorators.AcronymsToWordsDecorator;
-import pl.put.poznan.transformer.logic.textDecorators.LowerCaseDecorator;
-import pl.put.poznan.transformer.logic.textDecorators.UpperCaseDecorator;
-import pl.put.poznan.transformer.logic.textDecorators.CapitalizeDecorator;
-import pl.put.poznan.transformer.logic.textDecorators.LatexDecorator;
-import pl.put.poznan.transformer.logic.textDecorators.RemoveDuplicateWordsDecorator;
+import pl.put.poznan.transformer.logic.textDecorators.*;
 
 
 public class TextTransformerSwitch {
@@ -44,6 +36,8 @@ public class TextTransformerSwitch {
                     break;
                 case "RemoveDuplicateWords":
                     decoratedTransformer = new RemoveDuplicateWordsDecorator(decoratedTransformer);
+                case "ReverseCase":
+                    decoratedTransformer = new ReverseCaseDecorator(decoratedTransformer);
                     break;
                 default: throw new IllegalTransformerNameException(transform);
             }
