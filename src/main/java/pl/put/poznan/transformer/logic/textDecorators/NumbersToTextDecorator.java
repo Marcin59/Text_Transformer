@@ -11,7 +11,6 @@ public class NumbersToTextDecorator extends TextDecorator {
         super(textToTransform);
     }
 
-
     private String number2text(String number) {
         String[] single_digits = new String[]{"zero", "one", "two", "three", "four",
                 "five", "six", "seven", "eight", "nine"};
@@ -54,8 +53,19 @@ public class NumbersToTextDecorator extends TextDecorator {
                         return number2text(number.substring(0, n-3)) + " thousand";
                     }
                     return number2text(number.substring(0, n-3)) + " thousand " + number2text(rest);
+                } else if (n<=9) {
+                    rest=number.substring(n-6);
+                    if (rest.equals("000000")){
+                        return number2text(number.substring(0, n-6)) + " million";
+                    }
+                    return number2text(number.substring(0, n-6)) + " million " + number2text(rest);
                 }
-                return number;
+                else if (number.equals("1000000000")){
+                    return "one billion";
+                }
+                else{
+                    return number;
+                }
         }
 
     }
@@ -70,9 +80,12 @@ public class NumbersToTextDecorator extends TextDecorator {
 
         int len_float = decimal.length();
         int len_whole=whole.length();
-        if (len_whole>6 || len_float>2){
+        if (len_whole>10 || len_float>4){
             return number;
         }
+
+        decimal = decimal.replaceAll("0*$", "");
+        len_float=decimal.length();
         switch(len_float){
             case 0:
                 return number2text(whole);
@@ -87,6 +100,18 @@ public class NumbersToTextDecorator extends TextDecorator {
                     return number2text(whole);
                 } else {
                     return number2text(whole) + " and " + number2text(decimal) + " hundredths";
+                }
+            case 3:
+                if(decimal.equals("000")){
+                    return number2text(whole);
+                } else {
+                    return number2text(whole) + " and " + number2text(decimal) + " thousandths";
+                }
+            case 4:
+                if(decimal.equals("0000")){
+                    return number2text(whole);
+                } else {
+                    return number2text(whole) + " and " + number2text(decimal) + " ten-thousandths";
                 }
             default:
                 return number;
