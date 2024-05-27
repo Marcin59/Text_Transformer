@@ -6,11 +6,27 @@ import pl.put.poznan.transformer.logic.TextTransformer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * The NumbersToTextDecorator class is a text decorator that converts numbers in a given text to their textual representation.
+ * It extends the TextDecorator class and implements the TextTransformer interface.
+ */
 public class NumbersToTextDecorator extends TextDecorator {
+
+    /**
+     * Constructs a NumbersToTextDecorator object with the specified TextTransformer to decorate.
+     *
+     * @param textToTransform The TextTransformer object to decorate.
+     */
     public NumbersToTextDecorator(TextTransformer textToTransform) {
         super(textToTransform);
     }
 
+    /**
+     * Converts a number to its textual representation.
+     *
+     * @param number The number to convert.
+     * @return The textual representation of the number.
+     */
     private String number2text(String number) {
         String[] single_digits = new String[]{"zero", "one", "two", "three", "four",
                 "five", "six", "seven", "eight", "nine"};
@@ -70,10 +86,18 @@ public class NumbersToTextDecorator extends TextDecorator {
 
     }
 
-    private String convert(String number){
-        String whole=number;
-        String decimal="";
-        if (number.contains(".")){
+    /**
+     * Converts a decimal number to its textual representation.
+     *
+     * @param number The decimal number to convert.
+     * @return The textual representation of the decimal number.
+     */
+    private String convert(String number) {
+        String whole = number;
+        String decimal = "";
+
+        // Split the number into whole and decimal parts
+        if (number.contains(".")) {
             whole = number.substring(0, number.indexOf('.'));
             decimal = number.substring(number.indexOf('.') + 1);
         }
@@ -90,7 +114,7 @@ public class NumbersToTextDecorator extends TextDecorator {
             case 0:
                 return number2text(whole);
             case 1:
-                if(decimal.equals("0")){
+                if (decimal.equals("0")) {
                     return number2text(whole);
                 } else {
                     return number2text(whole) + " and " + number2text(decimal) + " tenths";
@@ -117,6 +141,13 @@ public class NumbersToTextDecorator extends TextDecorator {
                 return number;
         }
     }
+
+    /**
+     * Transforms the given text by converting numbers to their textual representation.
+     *
+     * @param text The text to transform.
+     * @return The transformed text with numbers converted to their textual representation.
+     */
     @Override
     public String transform(String text){
         text = super.transform(text);
